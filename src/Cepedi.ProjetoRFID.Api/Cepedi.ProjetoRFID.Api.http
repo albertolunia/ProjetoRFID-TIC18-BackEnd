@@ -1,6 +1,0 @@
-@Cepedi.ProjetoRFID.Api_HostAddress = http://localhost:5161
-
-GET {{Cepedi.ProjetoRFID.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
