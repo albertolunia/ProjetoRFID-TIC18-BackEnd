@@ -8,6 +8,6 @@ public interface ICategoryRepository
     Task<List<CaprinoEntity>> ReturnAllCategoriesAsync();
     Task<List<CaprinoEntity>> ReturnAllActiveCategoriesAsync();
     Task<CaprinoEntity> UpdateCategoryAsync(CaprinoEntity category);
-    Task<ProductEntity> ReturnProductCategoryAsync(Guid id);
+    Task<TipoDeCriacaoEntity> ReturnProductCategoryAsync(Guid id);
     Task<CaprinoEntity> DeleteCategoryAsync(Guid id);
 }

@@ -9,11 +9,12 @@ namespace TCC.ProjetoCaprino.Data;
 public class ApplicationDbContext : DbContext
 {
     public DbSet<CaprinoEntity> Category { get; set; } = default!;
-    public DbSet<ProductEntity> Product { get; set; } = default!;
-    public DbSet<SupplierEntity> Supplier { get; set; } = default!;
-    public DbSet<RfidTagEntity> RfidTag { get; set; } = default!;
-    public DbSet<ReadoutEntity> Readout { get; set; } = default!;
-    public DbSet<PackagingEntity> Packaging { get; set; } = default!;
+    public DbSet<TipoDeCriacaoEntity> Product { get; set; } = default!;
+    public DbSet<VacinaEntity> Supplier { get; set; } = default!;
+    public DbSet<EventoEntity> RfidTag { get; set; } = default!;
+    public DbSet<TipoDeAlimentoEntity> Readout { get; set; } = default!;
+    public DbSet<RacaEntity> Packaging { get; set; } = default!;
+    public DbSet<HistoricoDoCaprinoEntity> HistoricoDoCaprino { get; set; } = default!;
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

@@ -4,12 +4,11 @@ using TCC.ProjetoCaprino.Domain.Entities;
 
 namespace TCC.ProjetoCaprino.Data.EntityTypeConfiguration;
 
-public class RfidTagEntityTypeConfiguration : IEntityTypeConfiguration<RfidTagEntity>
+public class EventoEntityTypeConfiguration : IEntityTypeConfiguration<EventoEntity>
 {
-    public void Configure(EntityTypeBuilder<RfidTagEntity> builder)
+    public void Configure(EntityTypeBuilder<EventoEntity> builder)
     {
         builder.HasKey(e => e.Id);
-        builder.Property(e => e.RfidTag).IsRequired();
+        builder.Property(e => e.TipoDeEvento).IsRequired();
     }
-
 }

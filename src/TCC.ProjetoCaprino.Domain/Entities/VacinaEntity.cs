@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 
 namespace TCC.ProjetoCaprino.Domain.Entities;
 
-public class SupplierEntity
+public class VacinaEntity
 {
     public Guid Id { get; set; }
-    public string? Name { get; set; }
-    public string? Description { get; set; }
-    public string? PhoneNumber { get; set; }
-
+    public string TipoDeVacina { get; set; }
     public bool IsDeleted { get; set; } = false;
 
-    internal void Update(string name, string description, string phoneNumber)
+    internal void Update(string tipoDeVacina)
     {
-        Name = name;
-        Description = description;
-        PhoneNumber = phoneNumber;
+        TipoDeVacina = tipoDeVacina;
     }
     internal void Delete()
     {

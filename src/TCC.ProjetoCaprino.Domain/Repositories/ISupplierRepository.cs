@@ -3,11 +3,11 @@ namespace TCC.ProjetoCaprino.Domain.Repositories;
 
 public interface ISupplierRepository
 {
-    Task<SupplierEntity> CreateSupplierAsync(SupplierEntity Name);
-    Task<SupplierEntity> ReturnSupplierAsync(Guid id);
-    Task<List<SupplierEntity>> ReturnAllSuppliersAsync();
-    Task<List<SupplierEntity>> ReturnAllActiveSuppliersAsync();
-    Task<SupplierEntity> UpdateSupplierAsync(SupplierEntity Name);
-    Task<ProductEntity> ReturnProductSupplierAsync(Guid id);
-    Task<SupplierEntity> DeleteSupplierAsync(Guid id);
+    Task<VacinaEntity> CreateSupplierAsync(VacinaEntity Name);
+    Task<VacinaEntity> ReturnSupplierAsync(Guid id);
+    Task<List<VacinaEntity>> ReturnAllSuppliersAsync();
+    Task<List<VacinaEntity>> ReturnAllActiveSuppliersAsync();
+    Task<VacinaEntity> UpdateSupplierAsync(VacinaEntity Name);
+    Task<TipoDeCriacaoEntity> ReturnProductSupplierAsync(Guid id);
+    Task<VacinaEntity> DeleteSupplierAsync(Guid id);
 }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TCC.ProjetoCaprino.Domain.Entities
 {
-    public class PackagingEntity
+    public class RacaEntity
     {
         public Guid Id { get; set; }
-        public string? Name { get; set; }
+        public string Raca { get; set; }
         public bool IsDeleted { get; set; } = false;
 
-        public void Update(string name)
+        public void Update(string raca)
         {
-            Name = name;
+            Raca = raca;
         }
 
         public void Delete()

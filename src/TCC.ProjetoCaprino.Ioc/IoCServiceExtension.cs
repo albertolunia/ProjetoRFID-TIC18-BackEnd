@@ -30,12 +30,12 @@ namespace TCC.ProjetoCaprino.Ioc
 
             services.AddScoped<IMinioService, MinioService>();
 
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IRfidTagRepository, RfidTagRepository>();
-            services.AddScoped<ISupplierRepository, SupplierRepository>();
-            services.AddScoped<IReadoutRepository, ReadoutRepository>();
-            services.AddScoped<IPackagingRepository, PackagingRepositiory>();
+            //services.AddScoped<ICategoryRepository, CategoryRepository>();
+            //services.AddScoped<IProductRepository, ProductRepository>();
+            //services.AddScoped<IRfidTagRepository, RfidTagRepository>();
+            //services.AddScoped<ISupplierRepository, SupplierRepository>();
+            //services.AddScoped<IReadoutRepository, ReadoutRepository>();
+            //services.AddScoped<IPackagingRepository, PackagingRepositiory>();
 
             services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
 
