@@ -12,7 +12,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Packaging",
+                name: "Raca",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -25,7 +25,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RfidTag",
+                name: "Evento",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -37,7 +37,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Supplier",
+                name: "Vacina",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -95,7 +95,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Caprino_Packaging_RacaId",
                         column: x => x.RacaId,
-                        principalTable: "Packaging",
+                        principalTable: "Raca",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -134,13 +134,13 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                     table.ForeignKey(
                         name: "FK_HistoricoDoCaprino_RfidTag_EventoId",
                         column: x => x.EventoId,
-                        principalTable: "RfidTag",
+                        principalTable: "Evento",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_HistoricoDoCaprino_Supplier_VacinaId",
                         column: x => x.VacinaId,
-                        principalTable: "Supplier",
+                        principalTable: "Vacina",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -192,16 +192,16 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                 name: "Caprino");
 
             migrationBuilder.DropTable(
-                name: "RfidTag");
+                name: "Evento");
 
             migrationBuilder.DropTable(
-                name: "Supplier");
+                name: "Vacina");
 
             migrationBuilder.DropTable(
                 name: "TipoDeAlimento");
 
             migrationBuilder.DropTable(
-                name: "Packaging");
+                name: "Raca");
 
             migrationBuilder.DropTable(
                 name: "TipoDeCriacao");

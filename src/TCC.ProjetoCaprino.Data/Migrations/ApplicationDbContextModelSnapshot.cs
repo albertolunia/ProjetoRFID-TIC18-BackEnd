@@ -83,7 +83,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RfidTag");
+                    b.ToTable("Evento");
                 });
 
             modelBuilder.Entity("TCC.ProjetoCaprino.Domain.Entities.HistoricoDoCaprinoEntity", b =>
@@ -158,7 +158,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Packaging", (string)null);
+                    b.ToTable("aca", (string)null);
                 });
 
             modelBuilder.Entity("TCC.ProjetoCaprino.Domain.Entities.TipoDeAlimentoEntity", b =>
@@ -215,7 +215,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Supplier", (string)null);
+                    b.ToTable("Vacina", (string)null);
                 });
 
             modelBuilder.Entity("TCC.ProjetoCaprino.Domain.Entities.CaprinoEntity", b =>

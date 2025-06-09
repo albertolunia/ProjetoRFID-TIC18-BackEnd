@@ -8,7 +8,7 @@ public class VacinaEntityTypeConfiguration : IEntityTypeConfiguration<VacinaEnti
 {
     public void Configure(EntityTypeBuilder<VacinaEntity> builder)
     {
-        builder.ToTable("Supplier");
+        builder.ToTable("Vacina");
         builder.HasKey(e => e.Id);
         builder.Property(e => e.TipoDeVacina).IsRequired().HasMaxLength(100);
         builder.Property(e => e.IsDeleted).IsRequired().HasDefaultValue(false);

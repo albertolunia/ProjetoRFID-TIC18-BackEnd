@@ -48,7 +48,7 @@ public class ApplicationDbContextInitialiser
 
         // Default data
         // Seed, if necessary
-        if (!_context.RfidTag.Any())
+        if (!_context.Evento.Any())
         {
             //_context.RfidTag.Add(tag);
 

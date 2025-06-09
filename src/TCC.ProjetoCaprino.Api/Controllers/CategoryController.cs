@@ -19,9 +19,9 @@ public class CategoryController : BaseController
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<ReturnAllCategoriesResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<ReturnAllCaprinoResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<ReturnAllCategoriesResponse>>> ReturnAllCategorysAsync()
+    public async Task<ActionResult<List<ReturnAllCaprinoResponse>>> ReturnAllCategorysAsync()
         => await SendCommand(new ReturnAllCategoriesRequest());
 
     [HttpGet("active")]
@@ -31,28 +31,28 @@ public class CategoryController : BaseController
         ReturnAllActiveCategoriesAsync() => await SendCommand(new ReturnAllActiveCategoriesRequest());
 
     [HttpPost]
-    [ProducesResponseType(typeof(CreateCategoryResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(CreateCaprinoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CreateCategoryResponse>> CreateCategoryAsync(
-        [FromBody] CreateCategoryRequest request) => await SendCommand(request);
+    public async Task<ActionResult<CreateCaprinoResponse>> CreateCategoryAsync(
+        [FromBody] CreateCaprinoRequest request) => await SendCommand(request);
 
     [HttpPut]
-    [ProducesResponseType(typeof(UpdateCategoryResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(UpdateCaprinoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status204NoContent)]
-    public async Task<ActionResult<UpdateCategoryResponse>> UpdateCategoryAsync(
+    public async Task<ActionResult<UpdateCaprinoResponse>> UpdateCategoryAsync(
         [FromBody] UpdateCategoryRequest request) => await SendCommand(request);
 
     [HttpGet("{Id}")]
-    [ProducesResponseType(typeof(ReturnCategoryResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ReturnCaprinoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<ReturnCategoryResponse>> ReturnCategoryAsync(
+    public async Task<ActionResult<ReturnCaprinoResponse>> ReturnCategoryAsync(
         [FromRoute] ReturnCategoryRequest request) => await SendCommand(request);
 
     [HttpDelete("{Id}")]
-    [ProducesResponseType(typeof(DeleteCategoryResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(DeleteCaprinoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status204NoContent)]
-    public async Task<ActionResult<DeleteCategoryResponse>> DeleteCategoryAsync(
+    public async Task<ActionResult<DeleteCaprinoResponse>> DeleteCategoryAsync(
         [FromRoute] DeleteCategoryRequest request) => await SendCommand(request);
 }

@@ -3,7 +3,7 @@ using TCC.ProjetoCaprino.Shared.Requests.Category;
 
 namespace TCC.ProjetoCaprino.Shared.Validators.Category;
 
-public class CreateCategoryRequestValidator : AbstractValidator<CreateCategoryRequest>
+public class CreateCategoryRequestValidator : AbstractValidator<CreateCaprinoRequest>
 {
     public CreateCategoryRequestValidator()
     {

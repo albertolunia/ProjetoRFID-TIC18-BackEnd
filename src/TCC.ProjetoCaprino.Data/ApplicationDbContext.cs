@@ -8,12 +8,12 @@ namespace TCC.ProjetoCaprino.Data;
 [ExcludeFromCodeCoverage]
 public class ApplicationDbContext : DbContext
 {
-    public DbSet<CaprinoEntity> Category { get; set; } = default!;
-    public DbSet<TipoDeCriacaoEntity> Product { get; set; } = default!;
-    public DbSet<VacinaEntity> Supplier { get; set; } = default!;
-    public DbSet<EventoEntity> RfidTag { get; set; } = default!;
-    public DbSet<TipoDeAlimentoEntity> Readout { get; set; } = default!;
-    public DbSet<RacaEntity> Packaging { get; set; } = default!;
+    public DbSet<CaprinoEntity> Caprino { get; set; } = default!;
+    public DbSet<TipoDeCriacaoEntity> TipoDeCriacao { get; set; } = default!;
+    public DbSet<VacinaEntity> Vacina { get; set; } = default!;
+    public DbSet<EventoEntity> Evento { get; set; } = default!;
+    public DbSet<TipoDeAlimentoEntity> TipoDeAlimento { get; set; } = default!;
+    public DbSet<RacaEntity> Raca { get; set; } = default!;
     public DbSet<HistoricoDoCaprinoEntity> HistoricoDoCaprino { get; set; } = default!;
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
