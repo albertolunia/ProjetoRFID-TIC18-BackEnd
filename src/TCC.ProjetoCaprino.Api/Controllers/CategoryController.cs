@@ -1,8 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TCC.ProjetoCaprino.Shared.Exceptions;
-using TCC.ProjetoCaprino.Shared.Requests.Category;
-using TCC.ProjetoCaprino.Shared.Responses.Category;
+using TCC.ProjetoCaprino.Shared.Requests.Caprino;
+using TCC.ProjetoCaprino.Shared.Responses.Caprino;
 
 namespace TCC.ProjetoCaprino.Api.Controllers;
 
@@ -22,7 +22,7 @@ public class CategoryController : BaseController
     [ProducesResponseType(typeof(List<ReturnAllCaprinoResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<List<ReturnAllCaprinoResponse>>> ReturnAllCategorysAsync()
-        => await SendCommand(new ReturnAllCategoriesRequest());
+        => await SendCommand(new ReturnAllCaprinoRequest());
 
     [HttpGet("active")]
     [ProducesResponseType(typeof(List<ReturnAllActiveCategoriesResponse>), StatusCodes.Status200OK)]
@@ -47,12 +47,12 @@ public class CategoryController : BaseController
     [ProducesResponseType(typeof(ReturnCaprinoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<ReturnCaprinoResponse>> ReturnCategoryAsync(
-        [FromRoute] ReturnCategoryRequest request) => await SendCommand(request);
+        [FromRoute] ReturnCaprinoRequest request) => await SendCommand(request);
 
     [HttpDelete("{Id}")]
     [ProducesResponseType(typeof(DeleteCaprinoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status204NoContent)]
     public async Task<ActionResult<DeleteCaprinoResponse>> DeleteCategoryAsync(
-        [FromRoute] DeleteCategoryRequest request) => await SendCommand(request);
+        [FromRoute] DeleteCaprinoRequest request) => await SendCommand(request);
 }

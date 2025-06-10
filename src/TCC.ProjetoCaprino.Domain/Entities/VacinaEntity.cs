@@ -10,15 +10,5 @@ public class VacinaEntity
 {
     public Guid Id { get; set; }
     public string TipoDeVacina { get; set; }
-    public bool IsDeleted { get; set; } = false;
-
-    internal void Update(string tipoDeVacina)
-    {
-        TipoDeVacina = tipoDeVacina;
-    }
-    internal void Delete()
-    {
-        IsDeleted = true;
-    }
 }
 

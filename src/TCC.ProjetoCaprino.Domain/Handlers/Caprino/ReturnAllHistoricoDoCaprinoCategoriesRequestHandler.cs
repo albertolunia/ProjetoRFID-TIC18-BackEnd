@@ -1,6 +1,6 @@
 using TCC.ProjetoCaprino.Domain.Entities;
-using TCC.ProjetoCaprino.Shared.Requests.Category;
-using TCC.ProjetoCaprino.Shared.Responses.Category;
+using TCC.ProjetoCaprino.Shared.Requests.Caprino;
+using TCC.ProjetoCaprino.Shared.Responses.Caprino;
 using TCC.ProjetoCaprino.Shared.Enums;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -9,33 +9,38 @@ using TCC.ProjetoCaprino.Domain.Repositories;
 
 namespace TCC.ProjetoCaprino.Domain.Handlers.Category
 {
-    public class ReturnAllHistoricoDoCaprinoCategoriesRequestHandler : IRequestHandler<ReturnAllActiveCategoriesRequest, Result<List<ReturnAllActiveCategoriesResponse>>>
+    public class ReturnAllHistoricoDoCaprinoCategoriesRequestHandler : IRequestHandler<ReturnAllHistoricoDoCaprinoRequest, Result<List<ReturnAllHistoricoDoCaprinoResponse>>>
     {
         private readonly ILogger<ReturnAllHistoricoDoCaprinoCategoriesRequestHandler> _logger;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICaprinoRepository _historicoCaprinoRepository;
 
-        public ReturnAllHistoricoDoCaprinoCategoriesRequestHandler(ICategoryRepository categoryRepository, ILogger<ReturnAllHistoricoDoCaprinoCategoriesRequestHandler> logger)
+        public ReturnAllHistoricoDoCaprinoCategoriesRequestHandler(ICaprinoRepository historicoCaprinoRepository, ILogger<ReturnAllHistoricoDoCaprinoCategoriesRequestHandler> logger)
         {
-            _categoryRepository = categoryRepository;
+            _historicoCaprinoRepository = historicoCaprinoRepository;
             _logger = logger;
         }
 
-        public async Task<Result<List<ReturnAllActiveCategoriesResponse>>> Handle(ReturnAllActiveCategoriesRequest request, CancellationToken cancellationToken)
+        public async Task<Result<List<ReturnAllHistoricoDoCaprinoResponse>>> Handle(ReturnAllHistoricoDoCaprinoRequest request, CancellationToken cancellationToken)
         {
-            var categories = await _categoryRepository.ReturnAllActiveCategoriesAsync();
-            if (categories == null)
+            var historicos = await _historicoCaprinoRepository.ReturnAllHistoricoDoCaprinoAsync(request.Id);
+            if (historicos == null || !historicos.Any())
             {
-                return Result.Error<List<ReturnAllActiveCategoriesResponse>>(new Shared.Exceptions.ExceptionApplication(RegisteredErrors.CategoryListEmpty));
+                return Result.Error<List<ReturnAllHistoricoDoCaprinoResponse>>(new Shared.Exceptions.ExceptionApplication(RegisteredErrors.HistoricoCaprinoListEmpty));
             }
 
-            var response = new List<ReturnAllActiveCategoriesResponse>();
-            foreach (var category in categories)
-            {
-                response.Add(new ReturnAllActiveCategoriesResponse(category.Id,
-                                                            category.Name,
-                                                            category.Origin,
-                                                            category.Color));
-            }
+            var response = historicos.Select(h => new ReturnAllHistoricoDoCaprinoResponse(
+                h.Id,
+                h.CaprinoId,
+                h.Peso,
+                h.QuantidadeDeLeite,
+                h.TipoDeAlimentoId,
+                h.QuantidadeDeAlimento,
+                h.EventoId,
+                h.VacinaId,
+                h.Observacoes,
+                h.CreatedAt
+            )).ToList();
+
             return Result.Success(response);
         }
     }

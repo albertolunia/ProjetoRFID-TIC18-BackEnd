@@ -1,6 +1,6 @@
 using TCC.ProjetoCaprino.Shared.Exceptions;
-using TCC.ProjetoCaprino.Shared.Requests.RfidTag;
-using TCC.ProjetoCaprino.Shared.Responses.RfidTag;
+using TCC.ProjetoCaprino.Shared.Requests.Evento;
+using TCC.ProjetoCaprino.Shared.Responses.Evento;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,10 +21,10 @@ namespace TCC.ProjetoCaprino.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<ReturnAllRfidTagsResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ReturnAllEventoResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<List<ReturnAllRfidTagsResponse>>> ReturnAllRfidTagsAsync()
-            => await SendCommand(new ReturnAllRfidTagsRequest());
+        public async Task<ActionResult<List<ReturnAllEventoResponse>>> ReturnAllRfidTagsAsync()
+            => await SendCommand(new ReturnAllEventoRequest());
 
         [HttpPost]
         [ProducesResponseType(typeof(CreateRfidTagResponse), StatusCodes.Status200OK)]
@@ -40,10 +40,10 @@ namespace TCC.ProjetoCaprino.Api.Controllers
             [FromBody] UpdateRfidTagRequest request) => await SendCommand(request);
 
         [HttpGet("{Id}")]
-        [ProducesResponseType(typeof(ReturnRfidTagResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ReturnEventoResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ReturnRfidTagResponse>> ReturnRfidTagAsync(
-            [FromRoute] ReturnRfidTagRequest request) => await SendCommand(request);
+        public async Task<ActionResult<ReturnEventoResponse>> ReturnRfidTagAsync(
+            [FromRoute] ReturnEventoRequest request) => await SendCommand(request);
 
         [HttpDelete("{Id}")]
         [ProducesResponseType(typeof(DeleteRfidTagResponse), StatusCodes.Status200OK)]

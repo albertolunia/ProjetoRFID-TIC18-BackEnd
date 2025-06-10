@@ -1,6 +1,6 @@
 using TCC.ProjetoCaprino.Shared.Exceptions;
-using TCC.ProjetoCaprino.Shared.Requests.Product;
-using TCC.ProjetoCaprino.Shared.Responses.Product;
+using TCC.ProjetoCaprino.Shared.Requests.TipoDeCriacao;
+using TCC.ProjetoCaprino.Shared.Responses.TipoDeCriacao;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,10 +19,10 @@ public class ProductController : BaseController
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<ReturnAllProductsResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<ReturnAllTipoDeCriacaoResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<ReturnAllProductsResponse>>> ReturnAllProductsAsync()
-        => await SendCommand(new ReturnAllProductsRequest());
+    public async Task<ActionResult<List<ReturnAllTipoDeCriacaoResponse>>> ReturnAllProductsAsync()
+        => await SendCommand(new ReturnAllTipoDeCriacaoRequest());
 
     [HttpGet("active")]
     [ProducesResponseType(typeof(List<ReturnAllActiveProductsResponse>), StatusCodes.Status200OK)]
@@ -44,10 +44,10 @@ public class ProductController : BaseController
         [FromBody] UpdateProductRequest request) => await SendCommand(request);
 
     [HttpGet("{Id}")]
-    [ProducesResponseType(typeof(ReturnProductResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ReturnTipoDeCriacaoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<ReturnProductResponse>> ReturnProductAsync(
-        [FromRoute] ReturnProductRequest request) => await SendCommand(request);
+    public async Task<ActionResult<ReturnTipoDeCriacaoResponse>> ReturnProductAsync(
+        [FromRoute] ReturnTipoDeCriacaoRequest request) => await SendCommand(request);
 
     [HttpDelete("{Id}")]
     [ProducesResponseType(typeof(DeleteProductResponse), StatusCodes.Status200OK)]

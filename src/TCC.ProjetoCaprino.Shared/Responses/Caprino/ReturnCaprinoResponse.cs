@@ -1,4 +1,4 @@
-﻿namespace TCC.ProjetoCaprino.Shared.Responses.Category;
+﻿namespace TCC.ProjetoCaprino.Shared.Responses.Caprino;
 
 public record ReturnCaprinoResponse(
     Guid Id,
@@ -7,9 +7,7 @@ public record ReturnCaprinoResponse(
     bool Sexo,
     DateTime DataNascimento,
     Guid RacaId,
-    string RacaNome,
     Guid TipoDeCriacaoId,
-    string TipoDeCriacaoNome,
     string? Observacoes,
     DateTime CreatedAt,
     bool IsDeleted

@@ -16,5 +16,4 @@ public class HistoricoDoCaprinoEntity
     public Guid? VacinaId { get; set; }
     public string? Observacoes { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public bool IsDeleted { get; set; } = false;
 }

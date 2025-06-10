@@ -1,5 +1,5 @@
-﻿using TCC.ProjetoCaprino.Shared.Requests.Category;
-using TCC.ProjetoCaprino.Shared.Responses.Category;
+﻿using TCC.ProjetoCaprino.Shared.Requests.Caprino;
+using TCC.ProjetoCaprino.Shared.Responses.Caprino;
 using TCC.ProjetoCaprino.Shared.Enums;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -8,34 +8,32 @@ using TCC.ProjetoCaprino.Domain.Repositories;
 
 namespace TCC.ProjetoCaprino.Domain.Handlers.Category;
 public class DeleteCaprinoRequestHandler
-    : IRequestHandler<DeleteCategoryRequest, Result<DeleteCaprinoResponse>>
+    : IRequestHandler<DeleteCaprinoRequest, Result<DeleteCaprinoResponse>>
 {
     private readonly ILogger<DeleteCaprinoRequestHandler> _logger;
-    private readonly ICategoryRepository _categoryRepository;
+    private readonly ICaprinoRepository _caprinoRepository;
 
-    public DeleteCaprinoRequestHandler(ICategoryRepository categoryRepository, ILogger<DeleteCaprinoRequestHandler> logger)
+    public DeleteCaprinoRequestHandler(ICaprinoRepository caprinoRepository, ILogger<DeleteCaprinoRequestHandler> logger)
     {
-        _categoryRepository = categoryRepository;
+        _caprinoRepository = caprinoRepository;
         _logger = logger;
     }
 
-    public async Task<Result<DeleteCaprinoResponse>> Handle(DeleteCategoryRequest request, CancellationToken cancellationToken)
+    public async Task<Result<DeleteCaprinoResponse>> Handle(DeleteCaprinoRequest request, CancellationToken cancellationToken)
     {
-        var category = await _categoryRepository.ReturnCategoryAsync(request.Id);
-        if (category == null)
+        var caprino = await _caprinoRepository.ReturnCaprinoAsync(request.Id);
+        if (caprino == null)
         {
-            return Result.Error<DeleteCaprinoResponse>(new Shared.Exceptions.ExceptionApplication(RegisteredErrors.IdCategoryInvalid));
+            return Result.Error<DeleteCaprinoResponse>(new Shared.Exceptions.ExceptionApplication(RegisteredErrors.IdCaprinoInvalid));
         }
 
-        category.Delete();
+        caprino.Delete();
 
-        await _categoryRepository.DeleteCategoryAsync(category.Id);
+        await _caprinoRepository.DeleteCaprinoAsync(caprino.Id);
 
-
-        var response = new DeleteCategoryResponse(category.Id,
-                                                category.Name,
-                                                category.Origin,
-                                                category.Color);
+        var response = new DeleteCaprinoResponse(
+            caprino.Id
+        );
         return Result.Success(response);
     }
 }

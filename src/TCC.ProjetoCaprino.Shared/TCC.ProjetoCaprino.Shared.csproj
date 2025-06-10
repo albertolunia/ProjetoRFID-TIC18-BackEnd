@@ -12,4 +12,12 @@
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Refit" Version="7.1.2" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Validators\Evento\" />
+    <Folder Include="Validators\Raca\" />
+    <Folder Include="Validators\TipoDeAlimento\" />
+    <Folder Include="Validators\TipoDeCriacao\" />
+    <Folder Include="Validators\Vacina\" />
+  </ItemGroup>
 </Project>

@@ -57,10 +57,17 @@ public class CaprinoRepository : ICaprinoRepository
         return name;
     }
 
+    public async Task<HistoricoDoCaprinoEntity> ReturnHistoricoDoCaprinoAsync(Guid caprinoId)
+    {
+        return await _context.HistoricoDoCaprino
+            .Where(h => h.CaprinoId == caprinoId)
+            .FirstOrDefaultAsync();
+    }
+
     public async Task<List<HistoricoDoCaprinoEntity>> ReturnAllHistoricoDoCaprinoAsync(Guid caprinoId)
     {
         return await _context.HistoricoDoCaprino
-            .Where(h => h.CaprinoId == caprinoId && !h.IsDeleted)
+            .Where(h => h.CaprinoId == caprinoId)
             .ToListAsync();
     }
 }

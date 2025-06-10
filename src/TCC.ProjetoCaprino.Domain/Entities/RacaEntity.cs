@@ -10,16 +10,5 @@ namespace TCC.ProjetoCaprino.Domain.Entities
     {
         public Guid Id { get; set; }
         public string Raca { get; set; }
-        public bool IsDeleted { get; set; } = false;
-
-        public void Update(string raca)
-        {
-            Raca = raca;
-        }
-
-        public void Delete()
-        {
-            IsDeleted = true;
-        }
     }
 }

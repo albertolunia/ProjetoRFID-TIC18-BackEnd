@@ -1,6 +1,6 @@
 ﻿using TCC.ProjetoCaprino.Domain.Entities;
-using TCC.ProjetoCaprino.Shared.Requests.Category;
-using TCC.ProjetoCaprino.Shared.Responses.Category;
+using TCC.ProjetoCaprino.Shared.Requests.Caprino;
+using TCC.ProjetoCaprino.Shared.Responses.Caprino;
 using TCC.ProjetoCaprino.Shared.Enums;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -9,32 +9,37 @@ using TCC.ProjetoCaprino.Domain.Repositories;
 
 namespace TCC.ProjetoCaprino.Domain.Handlers.Category;
 public class ReturnCaprinoRequestHandler
-    : IRequestHandler<ReturnCategoryRequest, Result<ReturnCaprinoResponse>>
+    : IRequestHandler<ReturnCaprinoRequest, Result<ReturnCaprinoResponse>>
 {
     private readonly ILogger<ReturnCaprinoRequestHandler> _logger;
-    private readonly ICategoryRepository _categoryRepository;
+    private readonly ICaprinoRepository _caprinoRepository;
 
-    public ReturnCaprinoRequestHandler(ICategoryRepository categoryRepository, ILogger<ReturnCaprinoRequestHandler> logger)
+    public ReturnCaprinoRequestHandler(ICaprinoRepository caprinoRepository, ILogger<ReturnCaprinoRequestHandler> logger)
     {
-        _categoryRepository = categoryRepository;
+        _caprinoRepository = caprinoRepository;
         _logger = logger;
     }
 
-    public async Task<Result<ReturnCaprinoResponse>> Handle(ReturnCategoryRequest request, CancellationToken cancellationToken)
+    public async Task<Result<ReturnCaprinoResponse>> Handle(ReturnCaprinoRequest request, CancellationToken cancellationToken)
     {
-        var category = await _categoryRepository.ReturnCategoryAsync(request.Id);
-        if (category == null)
+        var caprino = await _caprinoRepository.ReturnCaprinoAsync(request.Id);
+        if (caprino == null)
         {
-            return Result.Error<ReturnCaprinoResponse>(new Shared.Exceptions.ExceptionApplication(RegisteredErrors.IdCategoryInvalid));
+            return Result.Error<ReturnCaprinoResponse>(new Shared.Exceptions.ExceptionApplication(RegisteredErrors.IdCaprinoInvalid));
         }
 
-        await _categoryRepository.ReturnCategoryAsync(category.Id);
-
-
-        var response = new ReturnCategoryResponse(category.Id,
-                                                category.Name,
-                                                category.Origin,
-                                                category.Color);
+        var response = new ReturnCaprinoResponse(
+            caprino.Id,
+            caprino.Brinco,
+            caprino.PesoAtual,
+            caprino.Sexo,
+            caprino.DataNascimento,
+            caprino.RacaId,
+            caprino.TipoDeCricaoId,
+            caprino.Observacoes,
+            caprino.CreatedAt,
+            caprino.IsDeleted
+        );
         return Result.Success(response);
     }
 }

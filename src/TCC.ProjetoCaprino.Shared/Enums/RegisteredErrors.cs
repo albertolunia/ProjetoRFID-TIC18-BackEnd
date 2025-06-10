@@ -42,7 +42,8 @@ public class RegisteredErrors
         ErrorDescription = "Ocorreu um erro na gravação de Fornecedor. Por favor tente novamente",
         Tipo = TypeError.Error
     };
-    public static ErrorResult ErrorSavingReadout = new(){
+    public static ErrorResult ErrorSavingReadout = new()
+    {
         ErrorTitle = "Ocorreu um erro na gravação",
         ErrorDescription = "Ocorreu um erro na gravação de Leitura. Por favor tente novamente",
         Tipo = TypeError.Error
@@ -65,7 +66,8 @@ public class RegisteredErrors
         ErrorDescription = "O ID do fornecedor especificado não é válido",
         Tipo = TypeError.Alert
     };
-    public static ErrorResult IdReadoutInvalid = new(){
+    public static ErrorResult IdReadoutInvalid = new()
+    {
         ErrorTitle = "Dado inválido",
         ErrorDescription = "O ID da leitura especificada não é válido",
         Tipo = TypeError.Alert
@@ -96,7 +98,8 @@ public class RegisteredErrors
         ErrorDescription = "Esse fornecedor ja existe",
         Tipo = TypeError.Alert
     };
-    public static ErrorResult ReadoutAlreadyExist = new(){
+    public static ErrorResult ReadoutAlreadyExist = new()
+    {
         ErrorTitle = "Dado inválido",
         ErrorDescription = "Essa leitura ja existe",
         Tipo = TypeError.Alert
@@ -121,7 +124,8 @@ public class RegisteredErrors
         ErrorDescription = "A lista de fornecedores retornada está vazia",
         Tipo = TypeError.Alert
     };
-    public static ErrorResult ReadoutListEmpty = new(){
+    public static ErrorResult ReadoutListEmpty = new()
+    {
         ErrorTitle = "Lista vazia",
         ErrorDescription = "A lista de leituras retornada está vazia",
         Tipo = TypeError.Alert
@@ -136,6 +140,67 @@ public class RegisteredErrors
     {
         ErrorTitle = "Nome inválido",
         ErrorDescription = "Já existe uma embalagem com esse nome",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult IdCaprinoInvalid = new()
+    {
+        ErrorTitle = "Dado inválido",
+        ErrorDescription = "O ID do caprino especificado não é válido",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult CaprinoListEmpty = new()
+    {
+        ErrorTitle = "Lista vazia",
+        ErrorDescription = "A lista de caprinos retornada está vazia",
+        Tipo = TypeError.Alert
+    };
+
+    public static ErrorResult HistoricoCaprinoListEmpty = new()
+    {
+        ErrorTitle = "Lista vazia",
+        ErrorDescription = "A lista de históricos de caprinos retornada está vazia",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult RacaListEmpty = new()
+    {
+        ErrorTitle = "Lista vazia",
+        ErrorDescription = "A lista de raças retornada está vazia",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult TipoDeAlimentoListEmpty = new()
+    {
+        ErrorTitle = "Lista vazia",
+        ErrorDescription = "A lista de tipos de alimento retornada está vazia",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult IdTipoDeAlimentoInvalid = new()
+    {
+        ErrorTitle = "Dado inválido",
+        ErrorDescription = "O ID do tipo de alimento especificado não é válido",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult TipoDeCriacaoListEmpty = new()
+    {
+        ErrorTitle = "Lista vazia",
+        ErrorDescription = "A lista de tipos de criação retornada está vazia",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult IdTipoDeCriacaoInvalid = new()
+    {
+        ErrorTitle = "Dado inválido",
+        ErrorDescription = "O ID do tipo de criação especificado não é válido",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult VacinaListEmpty = new()
+    {
+        ErrorTitle = "Lista vazia",
+        ErrorDescription = "A lista de vacinas retornada está vazia",
+        Tipo = TypeError.Alert
+    };
+    public static ErrorResult IdVacinaInvalid = new()
+    {
+        ErrorTitle = "Dado inválido",
+        ErrorDescription = "O ID da vacina especificada não é válido",
         Tipo = TypeError.Alert
     };
 }

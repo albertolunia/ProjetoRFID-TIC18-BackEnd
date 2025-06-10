@@ -1,6 +1,6 @@
 using TCC.ProjetoCaprino.Shared.Exceptions;
-using TCC.ProjetoCaprino.Shared.Requests.Readout;
-using TCC.ProjetoCaprino.Shared.Responses.Readout;
+using TCC.ProjetoCaprino.Shared.Requests.TipoDeAlimento;
+using TCC.ProjetoCaprino.Shared.Responses.TipoDeAlimento;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,10 +19,10 @@ public class ReadoutController : BaseController
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<ReturnAllReadoutsResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<ReturnAllTipoDeAlimentoResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<ReturnAllReadoutsResponse>>> ReturnAllReadoutsAsync()
-        => await SendCommand(new ReturnAllReadoutsRequest());
+    public async Task<ActionResult<List<ReturnAllTipoDeAlimentoResponse>>> ReturnAllReadoutsAsync()
+        => await SendCommand(new ReturnAllTipoDeAlimentoRequest());
 
     [HttpPost]
     [ProducesResponseType(typeof(CreateReadoutResponse), StatusCodes.Status200OK)]
@@ -32,8 +32,8 @@ public class ReadoutController : BaseController
 
 
     [HttpGet("{Id}")]
-    [ProducesResponseType(typeof(ReturnReadoutResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ReturnTipoDeAlimentoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<ReturnReadoutResponse>> ReturnReadoutAsync(
-        [FromRoute] ReturnReadoutRequest request) => await SendCommand(request);
+    public async Task<ActionResult<ReturnTipoDeAlimentoResponse>> ReturnReadoutAsync(
+        [FromRoute] ReturnTipoDeAlimentoRequest request) => await SendCommand(request);
 }

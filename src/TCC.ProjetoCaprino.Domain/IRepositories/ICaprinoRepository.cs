@@ -8,5 +8,6 @@ public interface ICaprinoRepository
     Task<List<CaprinoEntity>> ReturnAllCaprinosAsync();
     Task<CaprinoEntity> DeleteCaprinoAsync(Guid id);
     Task<HistoricoDoCaprinoEntity> CreateHistoricoDoCaprinoAsync(HistoricoDoCaprinoEntity historicoDoCaprino);
+    Task<HistoricoDoCaprinoEntity> ReturnHistoricoDoCaprinoAsync(Guid id);
     Task<List<HistoricoDoCaprinoEntity>> ReturnAllHistoricoDoCaprinoAsync(Guid caprinoId);
 }

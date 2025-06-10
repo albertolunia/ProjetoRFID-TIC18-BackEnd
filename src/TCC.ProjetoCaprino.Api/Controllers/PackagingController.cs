@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TCC.ProjetoCaprino.Shared.Exceptions;
-using TCC.ProjetoCaprino.Shared.Requests.Packaging;
-using TCC.ProjetoCaprino.Shared.Responses.Packaging;
+using TCC.ProjetoCaprino.Shared.Requests.Raca;
+using TCC.ProjetoCaprino.Shared.Responses.Raca;
 
 namespace TCC.ProjetoCaprino.Api.Controllers
 {
@@ -20,22 +20,22 @@ namespace TCC.ProjetoCaprino.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<ReturnPackagingResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ReturnRacaResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<List<ReturnPackagingResponse>>> ReturnAllPackagingAsync()
-            => await SendCommand(new ReturnAllPackagesRequest());
+        public async Task<ActionResult<List<ReturnRacaResponse>>> ReturnAllPackagingAsync()
+            => await SendCommand(new ReturnAllRacaRequest());
 
         [HttpGet("active")]
-        [ProducesResponseType(typeof(List<ReturnPackagingResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ReturnRacaResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<List<ReturnPackagingResponse>>> ReturnAllActivePackagingAsync()
+        public async Task<ActionResult<List<ReturnRacaResponse>>> ReturnAllActivePackagingAsync()
             => await SendCommand(new ReturnAllActivePackagesRequest());
 
-        [HttpGet("{PackagingId}")]
-        [ProducesResponseType(typeof(ReturnPackagingResponse), StatusCodes.Status200OK)]
+        [HttpGet("{Id}")]
+        [ProducesResponseType(typeof(ReturnRacaResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ReturnPackagingResponse>> GetPackagingById(
-            [FromRoute] ReturnPackagingByIdRequest request)
+        public async Task<ActionResult<ReturnRacaResponse>> GetPackagingById(
+            [FromRoute] ReturnRacaRequest request)
                 => await SendCommand(request);
 
         [HttpPost]
@@ -46,14 +46,14 @@ namespace TCC.ProjetoCaprino.Api.Controllers
                 => await SendCommand(request);
 
         [HttpPut]
-        [ProducesResponseType(typeof(UpdatePackagingResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ReturnAllRacaResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<UpdatePackagingResponse>> UpdatePackagingAsync(
+        public async Task<ActionResult<ReturnAllRacaResponse>> UpdatePackagingAsync(
             [FromBody] UpdatePackagingRequest request)
                 => await SendCommand(request);
 
-        [HttpDelete("{PackagingId}")]
+        [HttpDelete("{Id}")]
         [ProducesResponseType(typeof(DeletePackagingResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status204NoContent)]

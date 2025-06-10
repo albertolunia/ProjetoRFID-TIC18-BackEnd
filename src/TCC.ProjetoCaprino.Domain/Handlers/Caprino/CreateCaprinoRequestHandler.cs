@@ -1,6 +1,6 @@
 ﻿using TCC.ProjetoCaprino.Domain.Entities;
-using TCC.ProjetoCaprino.Shared.Requests.Category;
-using TCC.ProjetoCaprino.Shared.Responses.Category;
+using TCC.ProjetoCaprino.Shared.Requests.Caprino;
+using TCC.ProjetoCaprino.Shared.Responses.Caprino;
 using TCC.ProjetoCaprino.Shared.Enums;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -12,31 +12,33 @@ public class CreateCaprinoRequestHandler
     : IRequestHandler<CreateCaprinoRequest, Result<CreateCaprinoResponse>>
 {
     private readonly ILogger<CreateCaprinoRequestHandler> _logger;
-    private readonly ICaprinoRepository _categoryRepository;
+    private readonly ICaprinoRepository _caprinoRepository;
 
-    public CreateCaprinoRequestHandler(ICaprinoRepository categoryRepository, ILogger<CreateCaprinoRequestHandler> logger)
+    public CreateCaprinoRequestHandler(ICaprinoRepository caprinoRepository, ILogger<CreateCaprinoRequestHandler> logger)
     {
-        _categoryRepository = categoryRepository;
+        _caprinoRepository = caprinoRepository;
         _logger = logger;
     }
 
     public async Task<Result<CreateCaprinoResponse>> Handle(CreateCaprinoRequest request, CancellationToken cancellationToken)
     {
-        var category = new CaprinoEntity()
+        var caprino = new CaprinoEntity()
         {
-            Name = request.Name,
-            Origin = request.Origin,
-            Color = request.Color,
-
+            Brinco = request.Brinco,
+            PesoAtual = request.PesoAtual,
+            Sexo = request.Sexo,
+            DataNascimento = request.DataNascimento,
+            RacaId = request.RacaId,
+            TipoDeCricaoId = request.TipoDeCriacaoId,
+            Observacoes = request.Observacoes
         };
 
-        await _categoryRepository.CreateCategoryAsync(category);
+        await _caprinoRepository.CreateCaprinoAsync(caprino);
 
+        var response = new CreateCaprinoResponse(
+            caprino.Id
+        );
 
-        var response = new CreateCategoryResponse(category.Id,
-                                                category.Name,
-                                                category.Origin,
-                                                category.Color);
         return Result.Success(response);
     }
 }

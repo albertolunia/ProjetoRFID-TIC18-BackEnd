@@ -1,6 +1,6 @@
 using TCC.ProjetoCaprino.Shared.Exceptions;
 using TCC.ProjetoCaprino.Shared.Requests.Supplier;
-using TCC.ProjetoCaprino.Shared.Responses.Supplier;
+using TCC.ProjetoCaprino.Shared.Responses.Vacina;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,10 +19,10 @@ public class SupplierController : BaseController
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<ReturnAllSuppliersResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(List<ReturnAllVacinaResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<ReturnAllSuppliersResponse>>> ReturnAllSuppliersAsync()
-        => await SendCommand(new ReturnAllSuppliersRequest());
+    public async Task<ActionResult<List<ReturnAllVacinaResponse>>> ReturnAllSuppliersAsync()
+        => await SendCommand(new ReturnAllVacinaRequest());
 
     [HttpGet("active")]
     [ProducesResponseType(typeof(List<ReturnAllActiveSuppliersResponse>), StatusCodes.Status200OK)]
@@ -44,10 +44,10 @@ public class SupplierController : BaseController
         [FromBody] UpdateSupplierRequest request) => await SendCommand(request);
 
     [HttpGet("{Id}")]
-    [ProducesResponseType(typeof(ReturnSupplierResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ReturnVacinaResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<ReturnSupplierResponse>> ReturnSupplierAsync(
-        [FromRoute] ReturnSupplierRequest request) => await SendCommand(request);
+    public async Task<ActionResult<ReturnVacinaResponse>> ReturnSupplierAsync(
+        [FromRoute] ReturnVacinaRequest request) => await SendCommand(request);
 
     [HttpDelete("{Id}")]
     [ProducesResponseType(typeof(DeleteSupplierResponse), StatusCodes.Status200OK)]
