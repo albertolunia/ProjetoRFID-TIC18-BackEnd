@@ -8,11 +8,11 @@ namespace TCC.ProjetoCaprino.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ReadoutController : BaseController
+public class TipoDeAlimentoController : BaseController
 {
-    private readonly ILogger<ReadoutController> _logger;
+    private readonly ILogger<TipoDeAlimentoController> _logger;
     private readonly IMediator _mediator;
-    public ReadoutController(ILogger<ReadoutController> logger, IMediator mediator) : base(mediator)
+    public TipoDeAlimentoController(ILogger<TipoDeAlimentoController> logger, IMediator mediator) : base(mediator)
     {
         _logger = logger;
         _mediator = mediator;
@@ -21,19 +21,12 @@ public class ReadoutController : BaseController
     [HttpGet]
     [ProducesResponseType(typeof(List<ReturnAllTipoDeAlimentoResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<List<ReturnAllTipoDeAlimentoResponse>>> ReturnAllReadoutsAsync()
+    public async Task<ActionResult<List<ReturnAllTipoDeAlimentoResponse>>> ReturnAllTipoDeAlimentoAsync()
         => await SendCommand(new ReturnAllTipoDeAlimentoRequest());
-
-    [HttpPost]
-    [ProducesResponseType(typeof(CreateReadoutResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<CreateReadoutResponse>> CreateReadoutAsync(
-        [FromBody] CreateReadoutRequest request) => await SendCommand(request);
-
 
     [HttpGet("{Id}")]
     [ProducesResponseType(typeof(ReturnTipoDeAlimentoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<ReturnTipoDeAlimentoResponse>> ReturnReadoutAsync(
+    public async Task<ActionResult<ReturnTipoDeAlimentoResponse>> ReturnTipoDeAlimentoAsync(
         [FromRoute] ReturnTipoDeAlimentoRequest request) => await SendCommand(request);
 }

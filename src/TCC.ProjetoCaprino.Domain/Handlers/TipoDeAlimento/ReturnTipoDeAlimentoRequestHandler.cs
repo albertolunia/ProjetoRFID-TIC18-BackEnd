@@ -1,6 +1,3 @@
-using TCC.ProjetoCaprino.Domain.Entities;
-using TCC.ProjetoCaprino.Shared.Requests.Readout;
-using TCC.ProjetoCaprino.Shared.Responses.Readout;
 using TCC.ProjetoCaprino.Shared.Enums;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -9,7 +6,7 @@ using TCC.ProjetoCaprino.Domain.Repositories;
 using TCC.ProjetoCaprino.Shared.Responses.TipoDeAlimento;
 using TCC.ProjetoCaprino.Shared.Requests.TipoDeAlimento;
 
-namespace TCC.ProjetoCaprino.Domain.Handlers.Readout;
+namespace TCC.ProjetoCaprino.Domain.Handlers.TipoDeAlimento;
 public class ReturnTipoDeAlimentoRequestHandler
     : IRequestHandler<ReturnTipoDeAlimentoRequest, Result<ReturnTipoDeAlimentoResponse>>
 {

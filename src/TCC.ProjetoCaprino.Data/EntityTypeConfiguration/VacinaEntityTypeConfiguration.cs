@@ -11,6 +11,5 @@ public class VacinaEntityTypeConfiguration : IEntityTypeConfiguration<VacinaEnti
         builder.ToTable("Vacina");
         builder.HasKey(e => e.Id);
         builder.Property(e => e.TipoDeVacina).IsRequired().HasMaxLength(100);
-        builder.Property(e => e.IsDeleted).IsRequired().HasDefaultValue(false);
     }
 }

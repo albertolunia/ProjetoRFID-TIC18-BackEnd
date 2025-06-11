@@ -6,24 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TCC.ProjetoCaprino.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initial_commit : Migration
+    public partial class Initial_create : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Raca",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Raca = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Packaging", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Evento",
                 columns: table => new
@@ -33,20 +20,19 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RfidTag", x => x.Id);
+                    table.PrimaryKey("PK_Evento", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vacina",
+                name: "Raca",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TipoDeVacina = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    Raca = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Supplier", x => x.Id);
+                    table.PrimaryKey("PK_Raca", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,12 +52,23 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TipoDeCriacao = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    TipoDeCriacao = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TipoDeCriacao", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vacina",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TipoDeVacina = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vacina", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,7 +90,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                 {
                     table.PrimaryKey("PK_Caprino", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Caprino_Packaging_RacaId",
+                        name: "FK_Caprino_Raca_RacaId",
                         column: x => x.RacaId,
                         principalTable: "Raca",
                         principalColumn: "Id",
@@ -119,8 +116,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                     EventoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     VacinaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Observacoes = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()")
                 },
                 constraints: table =>
                 {
@@ -132,21 +128,21 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_HistoricoDoCaprino_RfidTag_EventoId",
+                        name: "FK_HistoricoDoCaprino_Evento_EventoId",
                         column: x => x.EventoId,
                         principalTable: "Evento",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_HistoricoDoCaprino_Supplier_VacinaId",
-                        column: x => x.VacinaId,
-                        principalTable: "Vacina",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_HistoricoDoCaprino_TipoDeAlimento_TipoDeAlimentoId",
                         column: x => x.TipoDeAlimentoId,
                         principalTable: "TipoDeAlimento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_HistoricoDoCaprino_Vacina_VacinaId",
+                        column: x => x.VacinaId,
+                        principalTable: "Vacina",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -195,10 +191,10 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                 name: "Evento");
 
             migrationBuilder.DropTable(
-                name: "Vacina");
+                name: "TipoDeAlimento");
 
             migrationBuilder.DropTable(
-                name: "TipoDeAlimento");
+                name: "Vacina");
 
             migrationBuilder.DropTable(
                 name: "Raca");

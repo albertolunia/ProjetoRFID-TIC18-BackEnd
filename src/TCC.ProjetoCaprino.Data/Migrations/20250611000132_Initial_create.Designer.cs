@@ -12,8 +12,8 @@ using TCC.ProjetoCaprino.Data;
 namespace TCC.ProjetoCaprino.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250608005710_initial_commit")]
-    partial class initial_commit
+    [Migration("20250611000132_Initial_create")]
+    partial class Initial_create
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,11 +106,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                     b.Property<Guid>("EventoId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("Observacoes")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -149,11 +144,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("Raca")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -161,7 +151,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("aca", (string)null);
+                    b.ToTable("Raca", (string)null);
                 });
 
             modelBuilder.Entity("TCC.ProjetoCaprino.Domain.Entities.TipoDeAlimentoEntity", b =>
@@ -185,11 +175,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("TipoDeCriacao")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -205,11 +190,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
 
                     b.Property<string>("TipoDeVacina")
                         .IsRequired()

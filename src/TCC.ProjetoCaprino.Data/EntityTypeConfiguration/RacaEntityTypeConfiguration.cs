@@ -11,7 +11,6 @@ namespace TCC.ProjetoCaprino.Data.EntityTypeConfiguration
             builder.ToTable("Raca");
             builder.HasKey(raca => raca.Id);
             builder.Property(raca => raca.Raca).IsRequired().HasMaxLength(100);
-            builder.Property(raca => raca.IsDeleted).IsRequired().HasDefaultValue(false);
         }
     }
 }

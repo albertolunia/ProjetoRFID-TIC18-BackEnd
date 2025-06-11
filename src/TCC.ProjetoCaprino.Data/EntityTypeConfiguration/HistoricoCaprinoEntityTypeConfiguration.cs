@@ -25,10 +25,6 @@ namespace TCC.ProjetoCaprino.Data.EntityTypeConfiguration
                    .IsRequired()
                    .HasDefaultValueSql("GETUTCDATE()");
 
-            builder.Property(h => h.IsDeleted)
-                   .IsRequired()
-                   .HasDefaultValue(false);
-
             builder.HasOne(h => h.Caprino)
                    .WithMany(c => c.Historico)
                    .HasForeignKey(h => h.CaprinoId)

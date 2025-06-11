@@ -28,31 +28,31 @@ public class ApplicationDbContextInitialiser
         }
     }
 
-    public async Task SeedAsync()
-    {
-        try
-        {
-            await TrySeedAsync();
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred while seeding the database.");
-            throw;
-        }
-    }
+    //public async Task SeedAsync()
+    //{
+    //    try
+    //    {
+    //        await TrySeedAsync();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _logger.LogError(ex, "An error occurred while seeding the database.");
+    //        throw;
+    //    }
+    //}
 
-    public async Task TrySeedAsync()
-    {
-        // Default roles
-        //var tag = new RfidTagEntity { Id = 1, RfidTag = "1234567890" };
+    //public async Task TrySeedAsync()
+    //{
+    //    // Default roles
+    //    //var tag = new RfidTagEntity { Id = 1, RfidTag = "1234567890" };
 
-        // Default data
-        // Seed, if necessary
-        if (!_context.Evento.Any())
-        {
-            //_context.RfidTag.Add(tag);
+    //    // Default data
+    //    // Seed, if necessary
+    //    if (!_context.Evento.Any())
+    //    {
+    //        //_context.RfidTag.Add(tag);
 
-            await _context.SaveChangesAsync();
-        }
-    }
+    //        await _context.SaveChangesAsync();
+    //    }
+    //}
 }

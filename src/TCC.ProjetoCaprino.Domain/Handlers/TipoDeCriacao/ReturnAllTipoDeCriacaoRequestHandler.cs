@@ -1,6 +1,4 @@
 ﻿using TCC.ProjetoCaprino.Domain.Entities;
-using TCC.ProjetoCaprino.Shared.Requests.Product;
-using TCC.ProjetoCaprino.Shared.Responses.Product;
 using TCC.ProjetoCaprino.Shared.Enums;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -9,7 +7,7 @@ using TCC.ProjetoCaprino.Domain.Repositories;
 using TCC.ProjetoCaprino.Shared.Responses.TipoDeCriacao;
 using TCC.ProjetoCaprino.Shared.Requests.TipoDeCriacao;
 
-namespace TCC.ProjetoCaprino.Domain.Handlers.Product;
+namespace TCC.ProjetoCaprino.Domain.Handlers.TipoDeCriacao;
 public class ReturnAllTipoDeCriacaoRequestHandler
     : IRequestHandler<ReturnAllTipoDeCriacaoRequest, Result<List<ReturnAllTipoDeCriacaoResponse>>>
 {

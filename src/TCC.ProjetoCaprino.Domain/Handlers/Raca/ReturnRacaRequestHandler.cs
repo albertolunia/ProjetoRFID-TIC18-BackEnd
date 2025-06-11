@@ -9,7 +9,7 @@ using TCC.ProjetoCaprino.Shared.Requests.Raca;
 
 namespace TCC.ProjetoCaprino.Domain.Handlers.Packaging
 {
-    public class ReturnRacaRequestHandler : IRequestHandler<ReturnAllRacaRequest, Result<List<ReturnRacaResponse>>>
+    public class ReturnRacaRequestHandler : IRequestHandler<ReturnRacaRequest, Result<ReturnRacaResponse>>
     {
         private readonly IRacaRepository _racaRepository;
         private readonly ILogger<ReturnRacaRequestHandler> _logger;
@@ -20,21 +20,16 @@ namespace TCC.ProjetoCaprino.Domain.Handlers.Packaging
             _logger = logger;
         }
 
-        public async Task<Result<List<ReturnRacaResponse>>> Handle(ReturnAllRacaRequest request, CancellationToken cancellationToken)
+        public async Task<Result<ReturnRacaResponse>> Handle(ReturnRacaRequest request, CancellationToken cancellationToken)
         {
-            var racas = await _racaRepository.ReturnAllRacaAsync();
 
-            if (racas == null || !racas.Any())
+            var raca = await _racaRepository.ReturnRacaByIdAsync(request.Id);
+            if (raca == null)
             {
-                return Result.Error<List<ReturnRacaResponse>>(new ExceptionApplication(RegisteredErrors.RacaListEmpty));
+                return Result.Error<ReturnRacaResponse>(new ExceptionApplication(RegisteredErrors.RacaListEmpty));
             }
 
-            var response = new List<ReturnRacaResponse>();
-
-            foreach (var raca in racas)
-            {
-                response.Add(new ReturnRacaResponse(raca.Id, raca.TipoDeRaca));
-            }
+            var response = new ReturnRacaResponse(raca.Id, raca.Raca);
 
             return Result.Success(response);
         }

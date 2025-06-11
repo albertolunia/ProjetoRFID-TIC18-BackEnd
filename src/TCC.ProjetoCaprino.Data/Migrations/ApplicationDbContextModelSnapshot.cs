@@ -103,11 +103,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                     b.Property<Guid>("EventoId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("Observacoes")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -146,11 +141,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("Raca")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -158,7 +148,7 @@ namespace TCC.ProjetoCaprino.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("aca", (string)null);
+                    b.ToTable("Raca", (string)null);
                 });
 
             modelBuilder.Entity("TCC.ProjetoCaprino.Domain.Entities.TipoDeAlimentoEntity", b =>
@@ -182,11 +172,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("TipoDeCriacao")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -202,11 +187,6 @@ namespace TCC.ProjetoCaprino.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
 
                     b.Property<string>("TipoDeVacina")
                         .IsRequired()
