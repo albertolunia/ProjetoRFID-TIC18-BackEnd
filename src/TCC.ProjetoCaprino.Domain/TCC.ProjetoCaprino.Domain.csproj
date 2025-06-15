@@ -8,6 +8,8 @@
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Minio" Version="6.0.3" />
+    <PackageReference Include="QuestPDF" Version="2025.5.1" />
+    <PackageReference Include="SkiaSharp" Version="3.119.0" />
   </ItemGroup>
 
   <PropertyGroup>

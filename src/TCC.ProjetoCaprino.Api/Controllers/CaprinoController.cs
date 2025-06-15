@@ -62,4 +62,15 @@ public class CaprinoController : BaseController
         var request = new ReturnHistoricoDoCaprinoRequest { Id = id };
         return await SendCommand(request);
     }
+
+    [HttpPost("gerar-relatorio")] // Exemplo de rota para gerar relatórios
+    [ProducesResponseType(typeof(GenerateCaprinoReportResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)] // Para erros na geração do PDF
+    public async Task<ActionResult<GenerateCaprinoReportResponse>> GerarRelatorioCaprinoAsync(
+        [FromBody] GenerateCaprinoReportRequest request)
+    {
+        var result = await SendCommand(request);
+        return result;
+    }
 }

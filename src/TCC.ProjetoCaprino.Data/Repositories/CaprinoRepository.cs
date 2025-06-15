@@ -70,4 +70,44 @@ public class CaprinoRepository : ICaprinoRepository
             .Where(h => h.CaprinoId == caprinoId)
             .ToListAsync();
     }
+
+    public async Task<List<CaprinoEntity>> GetCaprinosFilteredAsync(bool isIndividualReport, string? brinco, Guid? racaId, Guid? tipoDeCriacaoId, string? sexo, Guid? tipoDeAlimentacaoId)
+    {
+        var query = _context.Caprino
+                            .Include(c => c.Raca)
+                            .Include(c => c.TipoDeCricao)
+                            .Where(c => !c.IsDeleted);
+
+        if (isIndividualReport && !string.IsNullOrWhiteSpace(brinco))
+            query = query.Where(c => c.Brinco == brinco);
+
+        if (racaId.HasValue)
+            query = query.Where(c => c.RacaId == racaId.Value);
+
+        if (!string.IsNullOrWhiteSpace(sexo))
+        {
+            bool isMale = sexo.Equals("Macho", StringComparison.OrdinalIgnoreCase);
+            query = query.Where(c => c.Sexo == isMale);
+        }
+
+        return await query.ToListAsync();
+    }
+
+    public async Task<List<HistoricoDoCaprinoEntity>> GetHistoricoFilteredAsync(Guid? caprinoId, DateTime? dataInicio, DateTime? dataFim, string? tipoDeEvento, string? tipoDeVacina)
+    {
+        var query = _context.HistoricoDoCaprino
+                            .Include(h => h.Caprino)
+                            .AsQueryable();
+
+        if (caprinoId.HasValue)
+            query = query.Where(h => h.CaprinoId == caprinoId.Value);
+
+        if (dataInicio.HasValue)
+            query = query.Where(h => h.CreatedAt >= dataInicio.Value);
+
+        if (dataFim.HasValue)
+            query = query.Where(h => h.CreatedAt <= dataFim.Value);
+
+        return await query.ToListAsync();
+    }
 }

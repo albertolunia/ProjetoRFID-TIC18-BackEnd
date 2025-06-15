@@ -9,37 +9,13 @@ public class CaprinoEntity
     public DateTime DataNascimento { get; set; }
     public RacaEntity Raca { get; set; }
     public Guid RacaId { get; set; }
-
     public TipoDeCriacaoEntity TipoDeCricao { get; set; }
     public Guid TipoDeCricaoId { get; set; }
     public string? Observacoes { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public ICollection<HistoricoDoCaprinoEntity> Historico { get; set; } = new List<HistoricoDoCaprinoEntity>();
-
     public bool IsDeleted { get; set; } = false;
 
-    internal void Update(
-        string brinco,
-        decimal pesoAtual,
-        bool sexo,
-        DateTime dataNascimento,
-        RacaEntity raca,
-        Guid racaId,
-        TipoDeCriacaoEntity tipoDeCriacao,
-        Guid tipoDeCriacaoId,
-        string observacoes
-    )
-    {
-        Brinco = brinco;
-        PesoAtual = pesoAtual;
-        Sexo = sexo;
-        DataNascimento = dataNascimento;
-        Raca = raca;
-        RacaId = racaId;
-        TipoDeCricao = tipoDeCriacao;
-        TipoDeCricaoId = tipoDeCriacaoId;
-        Observacoes = observacoes;
-    }
     internal void Delete()
     {
         IsDeleted = true;

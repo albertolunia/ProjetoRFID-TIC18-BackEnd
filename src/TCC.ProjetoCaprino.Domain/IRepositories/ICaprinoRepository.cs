@@ -10,4 +10,19 @@ public interface ICaprinoRepository
     Task<HistoricoDoCaprinoEntity> CreateHistoricoDoCaprinoAsync(HistoricoDoCaprinoEntity historicoDoCaprino);
     Task<HistoricoDoCaprinoEntity> ReturnHistoricoDoCaprinoAsync(Guid id);
     Task<List<HistoricoDoCaprinoEntity>> ReturnAllHistoricoDoCaprinoAsync(Guid caprinoId);
+    Task<List<CaprinoEntity>> GetCaprinosFilteredAsync(
+        bool isIndividualReport,
+        string? brinco,
+        Guid? racaId,
+        Guid? tipoDeCriacaoId,
+        string? sexo,
+        Guid? tipoDeAlimentacaoId
+    );
+    Task<List<HistoricoDoCaprinoEntity>> GetHistoricoFilteredAsync(
+        Guid? caprinoId,
+        DateTime? dataInicio,
+        DateTime? dataFim,
+        string? tipoDeEvento,
+        string? tipoDeVacina
+    );
 }
