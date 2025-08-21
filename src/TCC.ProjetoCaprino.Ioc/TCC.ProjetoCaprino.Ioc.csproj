@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TCC.ProjetoCaprino.Application\TCC.ProjetoCaprino.Application.csproj" />
     <ProjectReference Include="..\TCC.ProjetoCaprino.Data\TCC.ProjetoCaprino.Data.csproj" />
     <ProjectReference Include="..\TCC.ProjetoCaprino.Domain\TCC.ProjetoCaprino.Domain.csproj" />
   </ItemGroup>

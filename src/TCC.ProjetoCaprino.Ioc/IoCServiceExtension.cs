@@ -11,6 +11,7 @@ using TCC.ProjetoCaprino.Domain.Repositories;
 using TCC.ProjetoCaprino.Data.Repositories;
 using TCC.ProjetoCaprino.Data;
 using TCC.ProjetoCaprino.Shared;
+using TCC.ProjetoCaprino.Application.Services;
 
 namespace TCC.ProjetoCaprino.Ioc
 {
@@ -36,6 +37,8 @@ namespace TCC.ProjetoCaprino.Ioc
             services.AddScoped<IVacinaRepository, VacinaRepository>();
             services.AddScoped<ITipoDeAlimentoRepository, TipoDeAlimentoRepository>();
             services.AddScoped<IRacaRepository, RacaRepositiory>();
+            services.AddScoped<CaprinoDataService>();
+            services.AddScoped<CaprinoPredictionService>();
 
             services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
 
