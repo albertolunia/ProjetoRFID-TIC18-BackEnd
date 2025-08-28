@@ -13,10 +13,10 @@ namespace TCC.ProjetoCaprino.Shared.Requests.Caprino
     {
         public required Guid CaprinoId { get; set; }
         public required decimal Peso { get; set; }
-        public required decimal QuantidadeDeLeite { get; set; }
+        public decimal? QuantidadeDeLeite { get; set; }
         public required Guid TipoDeAlimentoId { get; set; }
         public required decimal QuantidadeDeAlimento { get; set; }
-        public required Guid EventoId { get; set; }
+        public required Guid? EventoId { get; set; }
         public Guid? VacinaId { get; set; }
         public string? Observacoes { get; set; }
         public required DateTime Data { get; set; }

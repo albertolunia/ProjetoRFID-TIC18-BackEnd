@@ -30,6 +30,17 @@ public class CaprinoController : BaseController
     public async Task<ActionResult<CreateCaprinoResponse>> CreateCaprinoAsync(
         [FromBody] CreateCaprinoRequest request) => await SendCommand(request);
 
+    [HttpPost("{id}/historico")]
+    [ProducesResponseType(typeof(CreateHistoricoDoCaprinoResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<CreateHistoricoDoCaprinoResponse>> CreateHistoricoDoCaprinoAsync(
+    [FromRoute] Guid id,
+    [FromBody] CreateHistoricoDoCaprinoRequest request)
+    {
+        request.CaprinoId = id;
+        return await SendCommand(request);
+    }
+
     [HttpGet("{Id}")]
     [ProducesResponseType(typeof(ReturnCaprinoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResult), StatusCodes.Status400BadRequest)]

@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using OperationResult;
 using TCC.ProjetoCaprino.Domain.Repositories;
+using System.Linq;
 
 namespace TCC.ProjetoCaprino.Domain.Handlers.Category
 {
