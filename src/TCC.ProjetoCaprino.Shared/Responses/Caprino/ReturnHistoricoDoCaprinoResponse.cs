@@ -3,10 +3,10 @@
 public record ReturnHistoricoDoCaprinoResponse(
     Guid Id,
     Guid CaprinoId,
-    decimal Peso,
+    decimal? Peso,
     decimal? QuantidadeDeLeite,
-    Guid TipoDeAlimentoId,
-    decimal QuantidadeDeAlimento,
+    Guid? TipoDeAlimentoId,
+    decimal? QuantidadeDeAlimento,
     Guid? EventoId,
     Guid? VacinaId,
     string? Observacoes,

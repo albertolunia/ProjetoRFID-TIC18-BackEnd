@@ -15,9 +15,9 @@ namespace TCC.ProjetoCaprino.Data.EntityTypeConfiguration
         {
             builder.HasKey(h => h.Id);
 
-            builder.Property(h => h.Peso).IsRequired();
-            builder.Property(h => h.QuantidadeDeLeite).IsRequired();
-            builder.Property(h => h.QuantidadeDeAlimento).IsRequired();
+            builder.Property(h => h.Peso);
+            builder.Property(h => h.QuantidadeDeLeite);
+            builder.Property(h => h.QuantidadeDeAlimento);
 
             builder.Property(h => h.Observacoes).HasMaxLength(500);
 
