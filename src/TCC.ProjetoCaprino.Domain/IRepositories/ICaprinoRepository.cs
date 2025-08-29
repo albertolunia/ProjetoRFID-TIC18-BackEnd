@@ -25,4 +25,5 @@ public interface ICaprinoRepository
         string? tipoDeEvento,
         string? tipoDeVacina
     );
+    Task UpdatePesoAtualAsync(Guid caprinoId, decimal novoPeso);
 }

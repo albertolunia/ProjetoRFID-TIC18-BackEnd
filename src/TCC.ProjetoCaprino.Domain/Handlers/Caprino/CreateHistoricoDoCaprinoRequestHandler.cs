@@ -35,6 +35,11 @@ public class CreateHistoricoDoCaprinoRequestHandler
 
         await _caprinoRepository.CreateHistoricoDoCaprinoAsync(historico);
 
+        if (request.Peso.HasValue)
+        {
+            await _caprinoRepository.UpdatePesoAtualAsync(request.CaprinoId, request.Peso.Value);
+        }
+
         var response = new CreateHistoricoDoCaprinoResponse(
             historico.Id
         );

@@ -110,4 +110,14 @@ public class CaprinoRepository : ICaprinoRepository
 
         return await query.ToListAsync();
     }
+
+    public async Task UpdatePesoAtualAsync(Guid caprinoId, decimal novoPeso)
+    {
+        var caprino = await _context.Caprino.FindAsync(caprinoId);
+        if (caprino == null) return;
+
+        caprino.PesoAtual = novoPeso;
+        _context.Caprino.Update(caprino);
+        await _context.SaveChangesAsync();
+    }
 }
