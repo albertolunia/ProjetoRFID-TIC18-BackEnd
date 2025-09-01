@@ -203,4 +203,10 @@ public class RegisteredErrors
         ErrorDescription = "O ID da vacina especificada não é válido",
         Tipo = TypeError.Alert
     };
+    public static ErrorResult CaprinoAlreadyExist = new()
+    {
+        ErrorTitle = "Dado inválido",
+        ErrorDescription = "Já existe um caprino com esse brinco",
+        Tipo = TypeError.Alert
+    };
 }

@@ -26,4 +26,5 @@ public interface ICaprinoRepository
         string? tipoDeVacina
     );
     Task UpdatePesoAtualAsync(Guid caprinoId, decimal novoPeso);
+    Task<CaprinoEntity?> GetByBrincoAsync(string brinco);
 }

@@ -120,4 +120,10 @@ public class CaprinoRepository : ICaprinoRepository
         _context.Caprino.Update(caprino);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<CaprinoEntity?> GetByBrincoAsync(string brinco)
+    {
+        return await _context.Caprino
+            .FirstOrDefaultAsync(c => c.Brinco == brinco && !c.IsDeleted);
+    }
 }

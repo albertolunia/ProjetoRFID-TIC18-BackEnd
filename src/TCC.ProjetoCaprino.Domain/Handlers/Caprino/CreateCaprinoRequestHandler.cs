@@ -22,6 +22,14 @@ public class CreateCaprinoRequestHandler
 
     public async Task<Result<CreateCaprinoResponse>> Handle(CreateCaprinoRequest request, CancellationToken cancellationToken)
     {
+        var existingCaprino = await _caprinoRepository.GetByBrincoAsync(request.Brinco);
+        if (existingCaprino != null)
+        {
+            return Result.Error<CreateCaprinoResponse>(
+                new Shared.Exceptions.ExceptionApplication(RegisteredErrors.CaprinoAlreadyExist)
+            );
+        }
+
         var caprino = new CaprinoEntity()
         {
             Brinco = request.Brinco,

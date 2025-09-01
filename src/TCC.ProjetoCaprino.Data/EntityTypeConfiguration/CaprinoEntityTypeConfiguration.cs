@@ -16,6 +16,9 @@ public class CaprinoEntityTypeConfiguration : IEntityTypeConfiguration<CaprinoEn
             .IsRequired()
             .HasMaxLength(100);
 
+        builder.HasIndex(e => e.Brinco)
+            .IsUnique();
+
         builder.Property(e => e.PesoAtual)
             .IsRequired();
 
